@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NJCSC.App.Service.poc.api.Serviices
 {
-    public class EmpApplicationService
+    public class EmpApplicationService : IEmpApplicationService
     {
         private Repo _repo;
 
@@ -36,7 +36,7 @@ namespace NJCSC.App.Service.poc.api.Serviices
 
         public async Task<EmpApplication> GetEmpApplicationById(int id)
         {
-           return  await _repo.GetEmpApplicationById(id);
+            return await _repo.GetEmpApplicationById(id);
         }
 
         public async Task Delete(EmpApplicationDTO empApplication)
@@ -50,13 +50,13 @@ namespace NJCSC.App.Service.poc.api.Serviices
         {
 
             var dateOfBirth = empApplication.DateOfBirth.ToShortDateString();
-           
+
             DateTime parsedb;
             var dateOfBirthToSave = DateTime.TryParse(dateOfBirth, out parsedb);
-           
+
             var stop = "stop";
 
-            if(empApplication.CreatedDate == null)
+            if (empApplication.CreatedDate == null)
             {
                 empApplication.CreatedDate = DateTime.UtcNow;
             }
@@ -73,13 +73,13 @@ namespace NJCSC.App.Service.poc.api.Serviices
                 DateOfBirth = parsedb,
                 CreatedDate = empApplication.CreatedDate,
 
-        };
+            };
         }
 
         public async Task Edit(EmpApplicationDTO empApplication)
         {
             var empAppToEdit = MapToEmpApplication(empApplication);
-            await  _repo.Edit(empAppToEdit);
+            await _repo.Edit(empAppToEdit);
         }
     }
 }

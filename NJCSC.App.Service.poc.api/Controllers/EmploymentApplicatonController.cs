@@ -12,12 +12,14 @@ namespace NJCSC.App.Service.poc.api.Controllers
     public class EmploymentApplicatonController : ApiController
     {
 
-        private EmpApplicationService _service;
-
-        public EmploymentApplicatonController()
+        private IEmpApplicationService _service;
+        
+        public EmploymentApplicatonController(IEmpApplicationService service)
         {
-            _service = new EmpApplicationService();
+            _service = service;
         }
+
+       
 
         // GET api/EmploymentApplicaton
         public async Task<IEnumerable<EmpApplication>> Get()
@@ -26,6 +28,7 @@ namespace NJCSC.App.Service.poc.api.Controllers
             return empApp;
         }
 
+       
         // GET api/EmploymentApplicaton/5
         public async Task<EmpApplication> Get(int id)
         {
