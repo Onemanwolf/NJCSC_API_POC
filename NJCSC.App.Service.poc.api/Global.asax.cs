@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using NJCSC.App.Repository.poc.Repository;
 using NJCSC.App.Service.poc.api.Serviices;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace NJCSC.App.Service.poc.api
             // Usually you're only interested in exposing the type
             // via its interface:
             builder.RegisterType<EmpApplicationService>().As<IEmpApplicationService>();
+            builder.RegisterType<Repo>().As<IRepo>();
 
             // However, if you want BOTH services (not as common)
             // you can say so:

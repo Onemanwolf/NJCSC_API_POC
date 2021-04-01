@@ -10,13 +10,13 @@ using System.Diagnostics;
 
 namespace NJCSC.App.Repository.poc.Repository
 {
-    public class Repo
+    public class Repo : IRepo
     {
         private EmpApplicationContext _db;
 
         public Repo()
         {
-            _db = new EmpApplicationContext();      
+            _db = new EmpApplicationContext();
         }
 
         public async Task Save(EmpApplication empApplication)
@@ -48,7 +48,7 @@ namespace NJCSC.App.Repository.poc.Repository
                                 orderby ea.ApplicationId
                                 select ea).ToListAsync();
 
-           
+
             return empApp;
         }
 
@@ -73,7 +73,7 @@ namespace NJCSC.App.Repository.poc.Repository
         public async Task Edit(EmpApplication empApplication)
         {
 
-            if(empApplication.CreatedDate == DateTime.MinValue)
+            if (empApplication.CreatedDate == DateTime.MinValue)
             {
                 empApplication.CreatedDate = DateTime.UtcNow;
             }
@@ -85,11 +85,11 @@ namespace NJCSC.App.Repository.poc.Repository
             {
                 await _db.SaveChangesAsync();
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 Debug.WriteLine(ex);
             }
-           
+
         }
     }
 }

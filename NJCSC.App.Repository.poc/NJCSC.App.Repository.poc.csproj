@@ -124,6 +124,7 @@
     <Compile Include="Models\EmpApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EmpApplicationContext.cs" />
+    <Compile Include="Repository\IRepo.cs" />
     <Compile Include="Repository\Repo.cs" />
   </ItemGroup>
   <ItemGroup>

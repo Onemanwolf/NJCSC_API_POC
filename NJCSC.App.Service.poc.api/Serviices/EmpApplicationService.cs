@@ -10,12 +10,13 @@ namespace NJCSC.App.Service.poc.api.Serviices
 {
     public class EmpApplicationService : IEmpApplicationService
     {
-        private Repo _repo;
+        private IRepo _repo;
 
 
-        public EmpApplicationService()
+
+        public EmpApplicationService(IRepo repo)
         {
-            _repo = new Repo();
+            _repo = repo;
         }
         public async Task SaveEmpApplication(EmpApplicationDTO empApp)
         {
